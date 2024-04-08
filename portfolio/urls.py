@@ -16,7 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.views import *
+
+# Pour importer des images depuis les fichiers de notre (pc, tel ...)
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name="index"),
+    # path('details/<int:id>', portfolio_details)
+    path('details/', portfolio_details, name="portfolio_details"),
+    path('administration/', administration, name="administration"),
+    path('administration/about', administration_about, name="administration_about"),
+    # path('create', create) # faire modifier et supp le profil pas crée 
+    path('administration/skills', administration_skills, name="administration_skills"),
+    path('administration/portfolio', administration_portfolio, name="administration_portfolio"),
+    path('administration/service', administration_service, name="administration_service"),
+    path('administration/testimonial', administration_testimonial, name="administration_testimonial"),
+    path('administration/contact', administration_contact, name="administration_contact")
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

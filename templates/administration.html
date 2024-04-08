@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<section>
+
+
+  <div class="divAdministration">
+
+    <h4>Edit About</h4>
+    <button><a href={% url "administration_about" %}>Go Edit About</a></button>
+
+    <h4>Edit Skills</h4>
+    <button><a href={% url "administration_skills" %}>Go Edit Skills</a></button>
+
+    <h4>Edit Portfolio</h4>
+    <button><a href={% url "administration_portfolio" %}>Go Edit Portfolio</a></button>
+
+    <h4>Edit Service</h4>
+    <button><a href={% url "administration_service" %}>Go Edit Service</a></button>
+
+    <h4>Edit Testimonial</h4>
+    <button><a href={% url "administration_testimonial" %}>Go Edit Testimonial</a></button>
+
+    <h4>Edit Contact</h4>
+    <button><a href={% url "administration_contact" %}>Go Edit Contact</a></button>
+
+  </div>
+
+  
+</section>
+{% endblock content %}
