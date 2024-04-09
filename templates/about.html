@@ -1,4 +1,117 @@
-{% extends "base.html" %} {% block content %}
-<h1>about</h1>
-{% comment %} <input type="file" /> {% endcomment %}
+{% extends "base.html" %} 
+{% block content %} 
+{% comment %}
+<input type="file" /> {% endcomment %}
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %} 
+      {% comment %} {% for i in about %} {% endcomment %}
+      <div class="section-title">
+        <h2>About</h2>
+        <div>
+          <label for="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            value="{{about.description}}"
+            class="form-control w-100"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4" data-aos="fade-right">
+          <img src="{{ about.image.url }}" class="img-fluid" alt="" />
+          <input type="file" name="image">
+          {% comment %} <img src="{{ about.image.url }}" class="img-fluid" alt="" /> {% endcomment %}
+        </div>
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <div>
+            <label for="">Profession</label>
+            <input
+              type="text"
+              value="{{about.profession}}"
+              class="form-control w-100"
+              name="profession"
+            />
+          </div>
+          <div>
+            <label for="">About You</label>
+            <input
+              type="text"
+              value="{{about.about_you}}"
+              class="form-control w-100"
+              name="about_you"
+            />
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li>
+                  <i class="bi bi-chevron-right"></i>
+                  <strong>Birthday:</strong>
+                  <input type="date" name="birthday" id="" value="{{about.birthday}}" />
+                </li>
+
+                <li>
+                  <i class="bi bi-chevron-right"></i>
+                  <strong>Website:</strong>
+                  <input type="text" name="website" id="" value="{{about.website}}" />
+                </li>
+                <li>
+                  <i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
+                  <input type="text" name="phone" id="" value="{{about.phone}}" />
+                </li>
+                <li>
+                  <i class="bi bi-chevron-right"></i> <strong>City:</strong>
+                  <input type="text" name="city" id="" value="{{about.city}}" />
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul>
+                <li>
+                  <i class="bi bi-chevron-right"></i> <strong>Age:</strong>
+                  <input type="text" name="age" id="" value="{{about.age}}" />
+                </li>
+                <li>
+                  <i class="bi bi-chevron-right"></i> <strong>Degree:</strong>
+                  <input type="text" name="degree" id="" value="{{about.degree}}" />
+                </li>
+                <li>
+                  <i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                  <input type="text" name="email" id="" value="{{about.email}}" />
+                </li>
+                <li>
+                  <i class="bi bi-chevron-right"></i>
+                  <strong>Freelance:</strong>
+                  <input type="text" name="freelance" id="" value="{{about.freelance}}" />
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <label for="">More Info</label>
+            <input
+              type="text"
+              value="{{about.more_info}}"
+              class="form-control w-100"
+              name="more_info"
+            />
+          </div>
+        </div>
+      </div>
+      {% comment %} <a href={% url "edit_about" about.id %} type="submit" class="btn btn-success">Update</a> {% endcomment %}
+      <button type="submit" class="btn btn-success">Update</button>
+      {% comment %} <a href={% url "edit_about" about.id %} class="btn btn-success">Update</a> {% endcomment %}
+
+      {% comment %} {% endfor %} {% endcomment %}
+    </form>
+  </div>
+</section>
+<!-- End About Section -->
+
 {% endblock content %}

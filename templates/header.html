@@ -6,13 +6,10 @@
 <header id="header">
   <div class="d-flex flex-column">
     <div class="profile">
-      {% comment %} <img src={% static "assets/img/profile-img.jpg" %} alt="" class="img-fluid
-      rounded-circle" /> {% endcomment %}
-      <img src="{{ about.image.url }}" alt="" class="img-fluid
-      rounded-circle" />
+    
+      <img src="{{ about.image.url }}" alt="" class="img-fluid rounded-circle" />
 
       <h1 class="text-light">
-        {% comment %} <a href={% url "index" %}>Alex Smith</a> {% endcomment %}
         <a href={% url "index" %}>{{about.name}}</a>
         <a href={% url "administration" %} class="text-light text-decoration-none">✎</a>
       </h1>

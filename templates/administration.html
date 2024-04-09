@@ -1,26 +1,32 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <section>
-
+  
 
   <div class="divAdministration">
 
     <h4>Edit About</h4>
-    <button><a href={% url "administration_about" %}>Go Edit About</a></button>
+    {% comment %} <a href={% url "edit_about" i.id %} type="submit" class="btn btn-primary">Update</a> {% endcomment %}
+    {% comment %} <button type="button" class="btn btn-primary"><a href={% url "administration_about" %} class="text-light text-decoration-none">Go Edit About</a></button> {% endcomment %}
+    <button type="button" class="btn btn-primary"><a href="/administration/about/edit/{{about.id}}" class="text-light text-decoration-none">Go Edit About</a></button>
+    {% comment %} <button type="button" class="btn btn-primary"><a href={% url "edit_about" about.id %} class="text-light text-decoration-none">Go Edit About</a></button> {% endcomment %}
 
+{% comment %}     
     <h4>Edit Skills</h4>
-    <button><a href={% url "administration_skills" %}>Go Edit Skills</a></button>
+    <button type="button" class="btn btn-primary"><a href={% url "administration_skills" %} class="text-light text-decoration-none">Go Edit Skills</a></button>
 
     <h4>Edit Portfolio</h4>
-    <button><a href={% url "administration_portfolio" %}>Go Edit Portfolio</a></button>
+    <button type="button" class="btn btn-primary"><a href={% url "administration_portfolio" %} class="text-light text-decoration-none">Go Edit Portfolio</a></button>
 
     <h4>Edit Service</h4>
-    <button><a href={% url "administration_service" %}>Go Edit Service</a></button>
+    <button type="button" class="btn btn-primary"><a href={% url "administration_service" %} class="text-light text-decoration-none">Go Edit Service</a></button>
+
 
     <h4>Edit Testimonial</h4>
-    <button><a href={% url "administration_testimonial" %}>Go Edit Testimonial</a></button>
+    <button type="button" class="btn btn-primary"><a href={% url "administration_testimonial" %} class="text-light text-decoration-none">Go Edit Testimonial</a></button>
 
     <h4>Edit Contact</h4>
-    <button><a href={% url "administration_contact" %}>Go Edit Contact</a></button>
+    <button type="button" class="btn btn-primary"><a href={% url "administration_contact" %} class="text-light text-decoration-none">Go Edit Contact</a></button> {% endcomment %}
+
 
   </div>
 
