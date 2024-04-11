@@ -34,6 +34,9 @@ urlpatterns = [
     path('administration/about/edit/<int:id>/', update_about, name="edit_about"),
     # path('administration/about/delete/<int:id>', destroy, name="delete"),
 
+    path('administration/facts/edit/<int:id>/', update_facts, name="edit_facts"),
+
+
     # path('create', create) # faire modifier et supp le profil pas crée 
     # path('administration/skills/', administration_skills, name="administration_skills"),
     # path('administration/portfolio/', administration_portfolio, name="administration_portfolio"),

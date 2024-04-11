@@ -1,18 +1,24 @@
 {% extends "base.html" %} 
 {% block content %} 
-{% comment %}
-<input type="file" /> {% endcomment %}
 
 <!-- ======= About Section ======= -->
 <section id="about" class="about">
   <div class="container">
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %} 
-      {% comment %} {% for i in about %} {% endcomment %}
       <div class="section-title">
         <h2>About</h2>
         <div>
-          <label for="description">Description</label>
+          <label for="">Name</label>
+          <input
+            type="text"
+            name="name"
+            value="{{about.name}}"
+            class="form-control w-100"
+          />
+        </div>
+        <div>
+          <label for="">Description</label>
           <input
             type="text"
             name="description"
@@ -26,7 +32,6 @@
         <div class="col-lg-4" data-aos="fade-right">
           <img src="{{ about.image.url }}" class="img-fluid" alt="" />
           <input type="file" name="image">
-          {% comment %} <img src="{{ about.image.url }}" class="img-fluid" alt="" /> {% endcomment %}
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <div>
@@ -104,11 +109,7 @@
           </div>
         </div>
       </div>
-      {% comment %} <a href={% url "edit_about" about.id %} type="submit" class="btn btn-success">Update</a> {% endcomment %}
       <button type="submit" class="btn btn-success">Update</button>
-      {% comment %} <a href={% url "edit_about" about.id %} class="btn btn-success">Update</a> {% endcomment %}
-
-      {% comment %} {% endfor %} {% endcomment %}
     </form>
   </div>
 </section>

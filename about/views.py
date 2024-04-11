@@ -4,8 +4,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-# Juste modifier  (ici c'est crée)
-
+# Si j'aurais voulu crée 
 # def create_image(request):
 #     if request.method == 'POST':
 #         image = request.FILES['image']
@@ -13,15 +12,13 @@ from django.contrib import messages
 #         image.save()
 #         return redirect('index')
 
-# Faire en sorte de modifier 
-
 
 # CRUD - Update
 def update_about(request, id):
     about = About.objects.get(id=id)
     if request.method == 'POST':
         image = request.FILES['image']
-        # name = request.POST['name']
+        name = request.POST['name']
         birthday = request.POST['birthday']
         website = request.POST['website']
         phone = request.POST['phone']
@@ -41,16 +38,19 @@ def update_about(request, id):
         #     # return redirect("/about")  
         #     return redirect("about")  
 
-        # about.image = image
-        # about.name = name
+        about.image = image
+        about.name = name
         about.birthday = birthday
         about.website = website
         about.phone = phone
         about.city = city
+
         # if image is None:
-        #     about.image = about.image
-        # else:
-        about.image = image
+        #     # about.image = about.image
+        #     messages.error(request, 'Veuillez mettre une photo de profile !')
+        # # else
+
+
         about.age = age
         about.degree = degree
         about.email = email
