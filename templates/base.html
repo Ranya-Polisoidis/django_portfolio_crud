@@ -82,5 +82,18 @@
       });
     </script>
 
+    {% comment %} Pour l'affichage des % des skills {% endcomment %}
+    <script>
+      // Sélection du curseur range et du texte à mettre à jour
+      const rangeInput = document.getElementById("rangePercentage");
+      const percentageText = document.getElementById("percentage");
+    
+      // Écouter les changements de la valeur du curseur
+      rangeInput.addEventListener("input", function () {
+        // Mettre à jour le texte avec la nouvelle valeur du curseur
+        percentageText.textContent = this.value + "%";
+      });
+    </script>
+
     </body>
 </html>

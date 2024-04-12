@@ -26,23 +26,16 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    # path('header/', header),
 
     path('administration/', administration, name="administration"),
 
-    # path('administration/about/', administration_about, name="administration_about"),
     path('administration/about/edit/<int:id>/', update_about, name="edit_about"),
-    # path('administration/about/delete/<int:id>', destroy, name="delete"),
-
     path('administration/facts/edit/<int:id>/', update_facts, name="edit_facts"),
 
-
-    # path('create', create) # faire modifier et supp le profil pas crée 
-    # path('administration/skills/', administration_skills, name="administration_skills"),
-    # path('administration/portfolio/', administration_portfolio, name="administration_portfolio"),
-    # path('administration/service/', administration_service, name="administration_service"),
-    # path('administration/testimonial/', administration_testimonial, name="administration_testimonial"),
-    # path('administration/contact/', administration_contact, name="administration_contact")
+    path('administration/skills/', skills, name="skills"),
+    path('administration/skills/add/', add_skills, name="add_skills"),
+    path('administration/skills/edit/<int:id>/', update_skills, name="edit_skills"),
+    path('administration/skills/delete/<int:id>/', destory_skills, name="delete_skills"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

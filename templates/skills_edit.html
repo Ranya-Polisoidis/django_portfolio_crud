@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+{% comment %} Alert Bootstrap: Message de succès et d'erreur {% endcomment %} 
+{% for message in messages %}
+{% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+{% elif message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
+{% endif %} 
+{% endfor %} 
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Edit Skill</h2>
+      <button type="button" class="btn btn-secondary"><a href={% url "skills" %} class="text-light text-decoration-none">Back</a></button>
+    </div>
+
+    <form action="/administration/skills/edit/{{skills.id}}/" method="POST">
+      {% csrf_token %}
+      <div>
+        <div class="d-flex flex-column w-3">
+          <label for="">Langage</label>
+          <input type="text" value="{{skills.langages}}" name="langages" />
+        </div>
+        <div>
+          <input
+            type="range"
+            value="{{skills.percentage}}"
+            name="percentage"
+            id="rangePercentage"
+          />
+          <i class="val" id="percentage">{{skills.percentage}} %</i>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock content %}

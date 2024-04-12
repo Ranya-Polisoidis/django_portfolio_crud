@@ -21,7 +21,7 @@ def update_facts(request, id):
 
         facts.save()
 
-        messages.success(request, 'Votre section facts à bien été modifier !')
+        messages.success(request, 'Votre section facts a bien été modifier !')
 
         return redirect('/')
     

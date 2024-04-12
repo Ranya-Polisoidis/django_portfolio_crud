@@ -20,7 +20,21 @@ def index (request):
 def administration (request):
     about = About.objects.first()
     facts = Facts.objects.first()
-    return render(request, "administration.html", {"about": about, "facts": facts})
+    skills = Skills.objects.all()
+    return render(request, "administration.html", {"about": about, "facts": facts,  "skills": skills})
+
+# def update_facts (request):
+#     about = About.objects.first()
+#     facts = Facts.objects.first()
+#     skills = Skills.objects.all()
+#     return render(request, "facts.html", {"about": about, "facts": facts,  "skills": skills})
+
+
+# def about (request):
+#     about = About.objects.first()
+#     facts = Facts.objects.first()
+#     skills = Skills.objects.all()
+#     return render(request, "administration.html", {"about": about, "facts": facts,  "skills": skills})
 
 
 

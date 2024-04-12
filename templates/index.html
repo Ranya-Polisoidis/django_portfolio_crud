@@ -18,7 +18,8 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
   <div class="hero-container" data-aos="fade-in">
-    <h1>Alex Smith</h1>
+    <h1>{{about.name}}</h1>
+
     <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
   </div>
 </section><!-- End Hero -->
@@ -45,7 +46,9 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>{{about.birthday}}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>{{about.birthday|date:'d-m-Y'}}</span></li>
+                  {% comment %} <input type="date" name="birthday" id="" value="{{about.birthday|date:'Y-m-d'}}" /> {% endcomment %}
+
                   <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>{{about.website}}</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{about.phone}}</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{about.city}}</span></li>
@@ -133,15 +136,16 @@
 
       <div class="row skills-content">
 
-        {% comment %} <div class="col-lg-6" data-aos="fade-up"> {% endcomment %}
-
-      {% for i in skills %}
+        
+        {% for i in skills %}
+        <div class="col-lg-6" data-aos="fade-up">
           <div class="progress">
               <span class="skill">{{i.langages}} <i class="val">{{i.percentage}}%</i></span>
               <div class="progress-bar-wrap">
               <div class="progress-bar" role="progressbar" aria-valuenow={{i.percentage}} aria-valuemin="0" aria-valuemax="100"></div>
               </div>
           </div>
+        </div>
       {% endfor %}
 
 

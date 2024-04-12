@@ -1,35 +1,55 @@
 {% extends "base.html" %} {% block content %}
 <!-- ======= Skills Section ======= -->
-<section id="skills" class="skills section-bg">
+<section id="skills" class="skills">
   <div class="container">
     <div class="section-title">
+      
       <h2>Skills</h2>
+      
       <p>
         Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
         aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
         quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
         sit in iste officiis commodi quidem hic quas.
       </p>
+      <button type="button" class="btn btn-success"><a href={% url "add_skills" %} class="text-light text-decoration-none">Add</a></button>
+      <button type="button" class="btn btn-secondary"><a href={% url "administration" %} class="text-light text-decoration-none">Back</a></button>
+
     </div>
 
     <div class="row skills-content">
+
+      {% for i in skills %}
       <div class="col-lg-6" data-aos="fade-up">
-        {% for i in skills_all %}
-        <div class="progress">
-          <span class="skill"
-            >{{i.langages}} <i class="val">{{i.percentage}} %</i></span
-          >
-          <div class="progress-bar-wrap">
-            <div
-              class="progress-bar"
-              role="progressbar"
-              aria-valuenow="{{i.percentage}}"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
+            {% csrf_token %}
+              <div class="progress">
+                <span class="skill">{{i.langages}} <i class="val">{{i.percentage}} %</i></span>
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="{{i.percentage}}"
+                    aria-valuemin="0"
+                    aria-valuemax="100">
+                  </div>
+                </div>
+                <div class="d-flex">
+                  {% comment %} <button class="btn btn-success"><a href={% url "edit_skills" i.id %}  class="text-light text-decoration-none">✎</a></button> {% endcomment %}
+                  <a href={% url "edit_skills" i.id %}  class="text-primary text-decoration-none">✎</a>
+                  <form action="{% url "delete_skills" i.id %}" method='POST'> 
+                    {% csrf_token %}
+                    <button type="submit" class="border-none border-0 bg-transparent text-danger">⊗</button>
+                  </form> 
+                                
+                </div>
+
+              </div>
+
+
+          {% comment %} <form> {% endcomment %}
         </div>
         {% endfor %}
+
       </div>
     </div>
   </div>

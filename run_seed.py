@@ -6,6 +6,6 @@ from skills.seed import *
 
 
 if __name__== '__main__':
-    # run_about()
-    # run_facts()
+    run_about()
+    run_facts()
     run_skills()
