@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block content %}
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container">
+    <div class="section-title">
+      <h2>Portfolio</h2>
+      <p>
+        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
+        aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
+        quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+        sit in iste officiis commodi quidem hic quas.
+      </p>
+      <button type="button" class="btn btn-success"><a href={% url "add_theportfolio" %} class="text-light text-decoration-none">Add</a></button>
+      <button type="button" class="btn btn-secondary"><a href={% url "administration" %} class="text-light text-decoration-none">Back</a></button>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">App</li>
+          <li data-filter=".filter-card">Card</li>
+          <li data-filter=".filter-web">Web</li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="row portfolio-container"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      {% for i in theportfolio %}
+      <div class="col-lg-4 col-md-6 portfolio-item {{i.filter}}">
+        <div class="portfolio-wrap">
+          <img src="{{ i.image.url }}" class="img-fluid" alt="{{i.title}}" />
+
+          <div class="portfolio-links">
+            <a
+              href="{{ i.image.url }}"
+              data-gallery="portfolioGallery"
+              class="portfolio-lightbox"
+              title="{{i.title}}"
+              ><i class="bx bx-plus"></i
+            ></a>
+          </div>
+        </div>
+        {% comment %} <input type="file" name="image" /> {% endcomment %}
+        {% comment %} <label for="file_input">Choisir un fichier personnalisé :</label>
+        <input type="file" name="image" id="file_input" accept=".jpg, .jpeg, .png" /> {% endcomment %}
+        <div class="d-flex">
+            {% comment %} <button class="btn btn-success"><a href={% url "edit_theportfolio" i.id %}  class="text-light text-decoration-none">✎</a></button> {% endcomment %}
+            <a href={% url "edit_theportfolio" i.id %}  class="text-primary text-decoration-none">✎</a>
+            <form action="{% url "delete_theportfolio" i.id %}" method='POST'> 
+              {% csrf_token %}
+              <button type="submit" class="border-none border-0 bg-transparent text-danger">⊗</button>
+            </form> 
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Section -->
+{% endblock content %}

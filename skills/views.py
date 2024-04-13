@@ -11,6 +11,7 @@ def skills(request):
 # Crée
 def add_skills(request):
     if request.method == "POST": 
+
         langages = request.POST['langages']
         percentage = request.POST['percentage']
 
@@ -22,7 +23,9 @@ def add_skills(request):
         skills = Skills(langages=langages,percentage=percentage)
         skills.save()
         messages.success(request, 'Votre skill a bien été ajouter !')
+
         return redirect('/')  
+    
     return render(request, "skills_add.html")
 
 # CRUD - Update

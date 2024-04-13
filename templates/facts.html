@@ -1,5 +1,12 @@
 {% extends "base.html" %} {% block content %}
-
+{% comment %} Alert Bootstrap: Message de succès et d'erreur {% endcomment %} 
+{% for message in messages %}
+{% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+{% elif message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
+{% endif %} 
+{% endfor %} 
 <!-- ======= Facts Section ======= -->
 <section id="facts" class="facts">
   <form action="" method="POST">
@@ -22,7 +29,7 @@
         >
           <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
-            <input type="text" value="{{facts.client_count}}" name="client_count"/>
+            <input type="text" value="{{facts.client_count}}" name="client_count" class="form-control"/>
             <p><strong>Happy Clients</strong> consequuntur quae</p>
           </div>
         </div>
@@ -34,7 +41,7 @@
         >
           <div class="count-box">
             <i class="bi bi-journal-richtext"></i>
-            <input type="text" value="{{facts.projects_count}}" name="projects_count"/>
+            <input type="text" value="{{facts.projects_count}}" name="projects_count" class="form-control"/>
             <p><strong>Projects</strong> adipisci atque cum quia aut</p>
           </div>
         </div>
@@ -46,7 +53,7 @@
         >
           <div class="count-box">
             <i class="bi bi-headset"></i>
-            <input type="text" value="{{facts.support_hours}}" name="support_hours"/>
+            <input type="text" value="{{facts.support_hours}}" name="support_hours" class="form-control"/>
             <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
           </div>
         </div>
@@ -58,7 +65,7 @@
         >
           <div class="count-box">
             <i class="bi bi-people"></i>
-            <input type="text" value="{{facts.workers_count}}" name="workers_count"/>
+            <input type="text" value="{{facts.workers_count}}" name="workers_count" class="form-control"/>
             <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
           </div>
         </div>

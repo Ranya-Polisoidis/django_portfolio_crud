@@ -29,13 +29,28 @@ urlpatterns = [
 
     path('administration/', administration, name="administration"),
 
+    # Avec first sans boucle 
     path('administration/about/edit/<int:id>/', update_about, name="edit_about"),
     path('administration/facts/edit/<int:id>/', update_facts, name="edit_facts"),
 
+    # Avec all avec for
     path('administration/skills/', skills, name="skills"),
     path('administration/skills/add/', add_skills, name="add_skills"),
     path('administration/skills/edit/<int:id>/', update_skills, name="edit_skills"),
     path('administration/skills/delete/<int:id>/', destory_skills, name="delete_skills"),
+
+    path('administration/theportfolio/', theportfolio, name="theportfolio"),
+    path('administration/theportfolio/add/', add_theportfolio, name="add_theportfolio"),
+    path('administration/theportfolio/edit/<int:id>/', update_theportfolio, name="edit_theportfolio"),
+    path('administration/theportfolio/delete/<int:id>/', destory_theportfolio, name="delete_theportfolio"),
+
+    path('administration/service/', service, name="service"),
+    path('administration/service/edit/<int:id>/', update_service, name="edit_service"),
+
+    # Testimoniale tout faire je pense
+
+    # contacte juste modifier
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

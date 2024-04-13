@@ -36,7 +36,7 @@
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="{{ about.image.url }}" class="img-fluid" alt="">
+            <img src="{{ about.image.url }}" class="img-fluid" alt="{{about.name}}">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>{{about.profession}}</h3>
@@ -121,7 +121,7 @@
           </div>
   
         </div>
-           
+      
       </div>
 </section><!-- End Facts Section -->
 
@@ -224,12 +224,33 @@
 
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
+        {% for i in theportfolio %}
+        {% comment %} <div class="col-lg-4 col-md-6 portfolio-item filter-app"> {% endcomment %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{i.filter}}">
+              <div class="portfolio-wrap">
+                {% comment %} <img src={% static "assets/img/portfolio/portfolio-1.jpg" %} class="img-fluid" alt=""> {% endcomment %}
+                <img src="{{ i.image.url }}" class="img-fluid" alt="{{i.title}}">
+
+                <div class="portfolio-links">
+                  {% comment %} <a href={% static "assets/img/portfolio/portfolio-1.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a> {% endcomment %}
+                  <a href="{{ i.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{i.title}}"><i class="bx bx-plus"></i></a>
+                  {% comment %} Pour les détails (si je veux intégrer) {% endcomment %}
+                  {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+                </div>
+              </div>
+            </div>        
+          {% endfor %}
+
+
+        {% comment %} Si je veux reprendre mon code (commenter portfolio_details (car pas fais sauf si je le fais) {% endcomment %}
+
+        {% comment %} 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
             <img src={% static "assets/img/portfolio/portfolio-1.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-1.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -239,7 +260,7 @@
             <img src={% static "assets/img/portfolio/portfolio-2.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-2.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -249,7 +270,7 @@
             <img src={% static "assets/img/portfolio/portfolio-3.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-3.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -259,7 +280,7 @@
             <img src={% static "assets/img/portfolio/portfolio-4.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-4.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %}  title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %}  title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -269,7 +290,7 @@
             <img src={% static "assets/img/portfolio/portfolio-5.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-5.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -279,7 +300,7 @@
             <img src={% static "assets/img/portfolio/portfolio-6.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-6.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -289,7 +310,7 @@
             <img src={% static "assets/img/portfolio/portfolio-7.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-7.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -299,7 +320,7 @@
             <img src={% static "assets/img/portfolio/portfolio-8.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-8.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -309,10 +330,10 @@
             <img src={% static "assets/img/portfolio/portfolio-9.jpg" %} class="img-fluid" alt="">
             <div class="portfolio-links">
               <a href={% static "assets/img/portfolio/portfolio-9.jpg" %} data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-              {% comment %} <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a> {% endcomment %}
+              <a href={% url "portfolio_details" %} title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
 
       </div>
 
@@ -329,7 +350,17 @@
       </div>
 
       <div class="row">
+
+        {% comment %} Si j'avais utiliser all (et fais une boucle) du coup j'ai pas utiliser class_css  {% endcomment %}
+        {% for i in service %}
         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+          <div class="icon"><i class="{{i.class_css}}"></i></div>
+          <h4 class="title"><a href="">{{i.title}}</a></h4>
+          <p class="description">{{i.description}}</p>
+        </div>
+        {% endfor %}
+        
+        {% comment %} <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
           <div class="icon"><i class="bi bi-briefcase"></i></div>
           <h4 class="title"><a href="">Lorem Ipsum</a></h4>
           <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
@@ -358,7 +389,8 @@
           <div class="icon"><i class="bi bi-calendar4-week"></i></div>
           <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
           <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-        </div>
+        </div> {% endcomment %}
+
       </div>
 
     </div>

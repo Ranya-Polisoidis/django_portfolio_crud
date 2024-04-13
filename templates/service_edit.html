@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+{% elif message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
+{% endif %} 
+{% endfor %} 
+<section id="services" class="services">
+
+    <div class="container">
+
+        <div class="section-title">
+        <h2>Services</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <button type="button" class="btn btn-secondary"><a href={% url "service" %} class="text-light text-decoration-none">Back</a></button>
+        </div>
+
+        <div class="row">
+            <form action="/administration/service/edit/{{service.id}}/" method="POST">
+                {% csrf_token %} 
+                
+                {% comment %} <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">                </div> {% endcomment %}
+
+                {% comment %} <div class="icon"><i class="{{service.class_css}}"></i></div> {% endcomment %}
+                <div><i class="{{service.class_css}}"></i></div>
+                
+            
+                {% comment %} <div> {% endcomment %}
+                    <label for="" >Title</label>
+                    {% comment %} <h4 class="title"><a href="">{{service.title}}</a></h4> {% endcomment %}
+                    <input type="text" value="{{service.title}}" name="title" class="form-control w-100">
+                    <label for="">Description</label>
+                    {% comment %} <p class="description">{{service.description}}</p> {% endcomment %}
+                    <input type="text" value="{{service.description}}" name="description" class="form-control w-100">
+                {% comment %} </div> {% endcomment %}
+
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
+{% endblock content %}
