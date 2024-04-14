@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block content %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+{% elif message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
+{% endif %} 
+{% endfor %} 
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <div class="section-title">
+      <h2>Testimonials</h2>
+      <p>
+        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
+        aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
+        quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+        sit in iste officiis commodi quidem hic quas.
+      </p>
+      <button type="button" class="btn btn-secondary"><a href={% url "testimonial" %} class="text-light text-decoration-none">Back</a></button>
+    </div>
+
+    <form action="/administration/testimonial/edit/{{testimonial.id}}/" method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+
+      <div class="swiper-wrapper">
+        {% comment %} {% for i in testimonial %} {% endcomment %}
+        <div class="swiper-slide">
+        <div class="testimonial-item" data-aos="fade-up">
+            <p>
+                {% comment %} <i class="bx bxs-quote-alt-left quote-icon-left w-100"></i> {% endcomment %}
+                <label for="">Comment</label>
+                {% comment %} {{testimonial.comment}} {% endcomment %}
+                <input type="text" value="{{testimonial.comment}}" name="comment" class="w-100 form-control">
+                {% comment %} <i class="bx bxs-quote-alt-right quote-icon-right"></i> {% endcomment %}
+            </p>
+            <div class="portfolio-wrap d-flex flex-column align-items-center">
+                <img src="{{ testimonial.image.url }}" class="testimonial-img" alt="{{testimonial.name}}" />
+                <input type="file" name="image" />
+            </div>
+            </div>
+            <div class="d-flex flex-column">
+                <label for="">Name</label>
+                <input type="text" value="{{testimonial.name}}" name="name" class="form-control">
+                <label for="">Job</label>
+                <input type="text" value="{{testimonial.job}}" name="job" class="form-control">
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </div>
+    </form>
+
+  </div>
+</section>
+
+{% endblock content %}

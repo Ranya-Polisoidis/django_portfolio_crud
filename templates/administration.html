@@ -1,35 +1,86 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <section>
   
+  <div class="container">
 
-  <div class="divAdministration">
+    <div class="section-title">
+    <h2>Administration</h2>
+    <button type="button" class="btn btn-secondary"><a href={% url "index" %} class="text-light text-decoration-none">Back Home</a></button>
+    </div>
 
-    <h4>Edit About</h4>
-    {% comment %} <a href={% url "edit_about" i.id %} type="submit" class="btn btn-primary">Update</a> {% endcomment %}
-    {% comment %} <button type="button" class="btn btn-primary"><a href={% url "administration_about" %} class="text-light text-decoration-none">Go Edit About</a></button> {% endcomment %}
-    <button type="button" class="btn btn-primary"><a href="/administration/about/edit/{{about.id}}" class="text-light text-decoration-none">Go Edit About</a></button>
-    {% comment %} <button type="button" class="btn btn-primary"><a href={% url "edit_about" about.id %} class="text-light text-decoration-none">Go Edit About</a></button> {% endcomment %}
+  {% comment %} <div class="d-flex flex-wrap justify-content-center"> {% endcomment %}
+  <div class="d-flex flex-wrap">
 
-    <h4>Edit Facts</h4>
-    <button type="button" class="btn btn-primary"><a href="/administration/facts/edit/{{facts.id}}" class="text-light text-decoration-none">Go Edit Facts</a></button>
 
-    <h4>Edit Skills</h4>
-    {% comment %} <button type="button" class="btn btn-primary"><a href="/administration/skills/edit/{{skills.id}}" class="text-light text-decoration-none">Go Edit Skills</a></button> {% endcomment %}
-    <button type="button" class="btn btn-primary"><a href="/administration/skills/" class="text-light text-decoration-none">Go Edit Skills</a></button>
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Home Background</h5>
+        <button type="button" class="btn btn-primary"><a href="/administration/homebackground/edit/{{homebackground.id}}" class="text-light text-decoration-none">Go Edit Home Background</a></button>
+        <img src={% static "assets/img/homebackgroundadministration.jpg" %} class="card-img-top" alt="home background">
+      </div>
+    </div>
 
-    <h4>Edit Portfolio</h4>
-    <button type="button" class="btn btn-primary"><a href="/administration/theportfolio/" class="text-light text-decoration-none">Go Edit Portfolio</a></button>
-    
-    <h4>Edit Service</h4>
-    {% comment %} <button type="button" class="btn btn-primary"><a href="/administration/service/edit/{{service.id}}" class="text-light text-decoration-none">Go Edit Service</a></button> {% endcomment %}
-    <button type="button" class="btn btn-primary"><a href="/administration/service/" class="text-light text-decoration-none">Go Edit Portfolio</a></button>
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;"> 
+      <div class="card-body">
+        <h5 class="card-title">Edit About</h5>
+        {% comment %} Bootstrap de base {% endcomment %}
+        {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+        {% comment %} <a href={% url "edit_about" i.id %} type="submit" class="btn btn-primary">Update</a> {% endcomment %}
+        {% comment %} <button type="button" class="btn btn-primary"><a href={% url "administration_about" %} class="text-light text-decoration-none">Go Edit About</a></button> {% endcomment %}
+        <button type="button" class="btn btn-primary"><a href="/administration/about/edit/{{about.id}}" class="text-light text-decoration-none">Go Edit About</a></button>
+        {% comment %} <button type="button" class="btn btn-primary"><a href={% url "edit_about" about.id %} class="text-light text-decoration-none">Go Edit About</a></button> {% endcomment %}
+        <img src={% static "assets/img/about.jpg" %} class="card-img-top" alt="about">
+      </div>
+    </div>
 
-    {% comment %} <h4>Edit Testimonial</h4>
-    <button type="button" class="btn btn-primary"><a href="/administration/testimonial/edit/{{testimonial.id}}" class="text-light text-decoration-none">Go Edit Testimonial</a></button>
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Facts</h5>
+        <button type="button" class="btn btn-primary"><a href="/administration/facts/edit/{{facts.id}}" class="text-light text-decoration-none">Go Edit Facts</a></button>
+        <img src={% static "assets/img/facts.jpg" %} class="card-img-top" alt="facts">
+      </div>
+    </div>
 
-    <h4>Edit Contact</h4>
-    <button type="button" class="btn btn-primary"><a href="/administration/contact/edit/{{contact.id}}" class="text-light text-decoration-none">Go Edit Contact</a></button>  {% endcomment %}
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Skills</h5>
+        {% comment %} <button type="button" class="btn btn-primary"><a href="/administration/skills/edit/{{skills.id}}" class="text-light text-decoration-none">Go Edit Skills</a></button> {% endcomment %}
+        <button type="button" class="btn btn-primary"><a href="/administration/skills/" class="text-light text-decoration-none">Go Edit Skills</a></button>      </div>
+        <img src={% static "assets/img/skills.jpg" %} class="card-img-top" alt="skills">
+    </div>
 
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Portfolio</h5>
+        <button type="button" class="btn btn-primary"><a href="/administration/theportfolio/" class="text-light text-decoration-none">Go Edit Portfolio</a></button>
+        <img src={% static "assets/img/theportfolio.jpg" %} class="card-img-top" alt="theportfolio">
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Service</h5>
+        {% comment %} <button type="button" class="btn btn-primary"><a href="/administration/service/edit/{{service.id}}" class="text-light text-decoration-none">Go Edit Service</a></button> {% endcomment %}
+        <button type="button" class="btn btn-primary"><a href="/administration/service/" class="text-light text-decoration-none">Go Edit Service</a></button>
+        <img src={% static "assets/img/service.jpg" %} class="card-img-top" alt="service">
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Testimonial</h5>
+        <button type="button" class="btn btn-primary"><a href="/administration/testimonial/" class="text-light text-decoration-none">Go Edit Testimonial</a></button>
+        <img src={% static "assets/img/testimonial.jpg" %} class="card-img-top" alt="testimonial">
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem; margin-bottom: 20px; margin-left: 20px;">
+      <div class="card-body">
+        <h5 class="card-title">Edit Contact</h5>
+        <button type="button" class="btn btn-primary"><a href="/administration/contact/edit/{{contact.id}}" class="text-light text-decoration-none">Go Edit Contact</a></button> 
+        <img src={% static "assets/img/contact.jpg" %} class="card-img-top" alt="contact">
+      </div>
+    </div>
 
   </div>
 

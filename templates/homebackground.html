@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+        <h2>Edit Home Background</h2>
+        <button type="button" class="btn btn-secondary"><a href={% url "administration" %} class="text-light text-decoration-none">Back</a></button>
+        </div>
+
+        <div class="row">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <img src="{{ homebackground.image.url }}" class="img-fluid" alt="home background" />
+                <input type="file" name="image">
+                <div>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock content %}

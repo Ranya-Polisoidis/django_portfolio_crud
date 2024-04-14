@@ -14,14 +14,21 @@ def update_facts(request, id):
         support_hours = request.POST['support_hours']
         workers_count = request.POST['workers_count']
 
-        facts.client_count = client_count
-        facts.projects_count = projects_count
-        facts.support_hours = support_hours
-        facts.workers_count = workers_count
+        # Validation pour vérifier si les champs sont vides ou non des entiers
+        if not client_count.isdigit() or not projects_count.isdigit() or not support_hours.isdigit() or not workers_count.isdigit():
+            messages.error(request, "Please enter valid integer values for all fields!")
+            return redirect('edit_facts', id=id)
+
+        # Mise à jour des données si la validation réussit
+        facts.client_count = int(client_count)
+        facts.projects_count = int(projects_count)
+        facts.support_hours = int(support_hours)
+        facts.workers_count = int(workers_count)
+
 
         facts.save()
 
-        messages.success(request, 'Votre section facts a bien été modifier !')
+        messages.success(request, "Your facts section has been successfully modified!")
 
         return redirect('/')
     

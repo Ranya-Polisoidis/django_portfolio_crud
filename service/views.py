@@ -19,11 +19,11 @@ def update_service(request, id):
 
         # Si le champs est vide
         if not title.strip():  
-            messages.error(request, 'Veuillez saisir le titre !')
+            messages.error(request, "Please enter the title!")
             return redirect('edit_service', id=id)  
         
         if not description.strip():  
-            messages.error(request, 'Veuillez saisir la description !')
+            messages.error(request, "Please enter the description!")
             return redirect('edit_service', id=id)  
 
         service.title = title
@@ -31,7 +31,7 @@ def update_service(request, id):
 
         service.save()
 
-        messages.success(request, 'Votre section service a bien été modifier !')
+        messages.success(request, "Your service section has been successfully modified!")
 
         return redirect('/')
     

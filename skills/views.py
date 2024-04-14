@@ -17,12 +17,12 @@ def add_skills(request):
 
         # Si le champ langages est vide ou contient uniquement des espaces
         if not langages.strip():  
-            messages.error(request, 'Veuillez saisir le langage !')
+            messages.error(request, "Please enter the language!")
             return redirect('add_skills') 
         
         skills = Skills(langages=langages,percentage=percentage)
         skills.save()
-        messages.success(request, 'Votre skill a bien été ajouter !')
+        messages.success(request, "Your skill has been successfully added!")
 
         return redirect('/')  
     
@@ -38,7 +38,7 @@ def update_skills(request, id):
 
         # Comme au-dessus
         if not langages.strip():  
-            messages.error(request, 'Veuillez saisir le langage !')
+            messages.error(request, "Please enter the language!")
             return redirect('edit_skills', id=id)  
 
         skills.langages = langages
@@ -46,7 +46,7 @@ def update_skills(request, id):
 
         skills.save()
 
-        messages.success(request, 'Votre skill a bien été modifier !')
+        messages.success(request, "Your skill has been successfully modified!")
 
         return redirect('/')
     
@@ -56,6 +56,6 @@ def update_skills(request, id):
 def destory_skills(request, id):
     skills = Skills.objects.get(id=id)
     skills.delete()
-    messages.success(request, 'Votre skill a bien été supprimé !')
+    messages.success(request, "Your skill has been successfully deleted!")
     # return redirect('/')
     return redirect('/')

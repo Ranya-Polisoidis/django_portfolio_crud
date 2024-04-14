@@ -61,7 +61,7 @@ def update_about(request, id):
         
         about.save()
 
-        messages.success(request, 'Votre section about a bien été modifier !')
+        messages.success(request, 'Your about section has been successfully modified!')
 
         return redirect('/')
     

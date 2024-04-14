@@ -29,7 +29,8 @@ urlpatterns = [
 
     path('administration/', administration, name="administration"),
 
-    # Avec first sans boucle 
+    # Avec first sans boucle
+    path('administration/homebackground/edit/<int:id>/', update_homebackground, name="edit_homebackground"),
     path('administration/about/edit/<int:id>/', update_about, name="edit_about"),
     path('administration/facts/edit/<int:id>/', update_facts, name="edit_facts"),
 
@@ -47,9 +48,11 @@ urlpatterns = [
     path('administration/service/', service, name="service"),
     path('administration/service/edit/<int:id>/', update_service, name="edit_service"),
 
-    # Testimoniale tout faire je pense
-
-    # contacte juste modifier
+    path('administration/testimonial/', testimonial, name="testimonial"),
+    path('administration/testimonial/edit/<int:id>/', update_testimonial, name="edit_testimonial"),
+    
+    # Avec first sans boucle 
+    path('administration/contact/edit/<int:id>/', update_contact, name="edit_contact"),
 
 ]
 

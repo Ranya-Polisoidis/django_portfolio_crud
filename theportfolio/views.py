@@ -16,19 +16,19 @@ def add_theportfolio(request):
 
         # Vérifier si le champ title est vide ou contient uniquement des espaces
         if not title.strip():  
-            messages.error(request, 'Veuillez saisir le titre !')
+            messages.error(request, "Please enter the title!")
             return redirect('add_theportfolio') 
         
         # Vérifier si il y a une image
         if 'image' not in request.FILES:
-            messages.error(request, 'Veuillez sélectionner une image !')
+            messages.error(request, "Please select an image!")
             return redirect('add_theportfolio')
         else:
             image = request.FILES['image']
 
         theportfolio = Theportfolio(image=image,title=title)
         theportfolio.save()
-        messages.success(request, 'Votre élèment a bien été ajouter !')
+        messages.success(request, "Your element has been successfully added!")
 
         return redirect('/')  
     
@@ -44,7 +44,7 @@ def update_theportfolio(request, id):
 
         # Si le champ title est vide ou contient uniquement des espaces
         if not title.strip():  
-            messages.error(request, 'Veuillez saisir le titre !')
+            messages.error(request, "Please enter the title!")
             return redirect('edit_theportfolio', id=id)  
         
         # Vérifier si nouvelle image
@@ -60,7 +60,7 @@ def update_theportfolio(request, id):
 
         theportfolio.save()
 
-        messages.success(request, 'Votre élèment a bien été modifier !')
+        messages.success(request, "Your element has been successfully modified!")
 
         return redirect('/')
     
@@ -71,5 +71,5 @@ def update_theportfolio(request, id):
 def destory_theportfolio(request, id):
     theportfolio = Theportfolio.objects.get(id=id)
     theportfolio.delete()
-    messages.success(request, 'Votre élèment a bien été supprimé !')
+    messages.success(request, "Your element has been successfully deleted!")
     return redirect('/')
